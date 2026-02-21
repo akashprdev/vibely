@@ -1,0 +1,17 @@
+{
+  "name": "local",
+  "variables": {
+    "local": {
+      "value": "http://localhost:3000/api/v1",
+      "type": "string",
+      "id": "e443a524-7e39-4be2-9156-bc71feef4223",
+      "isSecret": false
+    },
+    "prod": {
+      "value": "www.prod.com",
+      "type": "string",
+      "id": "ca18dbcc-b0af-463b-a3d3-18f6c7fc4697",
+      "isSecret": false
+    }
+  }
+}

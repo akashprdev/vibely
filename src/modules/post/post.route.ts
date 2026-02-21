@@ -7,8 +7,9 @@ import { Router } from 'express';
 
 // http://localhost:3000/api/v1/post/upload
 const router = Router();
+
 router.post(
-  '/upload',
+  '/create',
   authMiddleware,
   upload.array('media', 5),
   validate(createPostSchema),

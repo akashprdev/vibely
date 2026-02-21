@@ -29,5 +29,6 @@ export default defineConfig([
     '!node_modules/mylibrary/', // unignore `node_modules/mylibrary` directory
     'dist/*',
     'drizzle/*',
+    'api-collection/*',
   ]),
 ]);

@@ -1,0 +1,21 @@
+{
+  "name": "signup",
+  "rank": "auntit17717069796741",
+  "request": {
+    "type": "http",
+    "url": "{{local}}/auth/register",
+    "scripts": {
+      "preRequest": "",
+      "postResponse": ""
+    },
+    "method": "POST",
+    "queryParams": [],
+    "headers": [],
+    "body": "",
+    "contentType": "text/plain",
+    "auth": {
+      "currentAuthType": "INHERIT",
+      "authConfigStore": {}
+    }
+  }
+}

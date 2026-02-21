@@ -1,0 +1,29 @@
+{
+  "name": "create",
+  "rank": "auntit17717070933921",
+  "request": {
+    "type": "http",
+    "url": "{{local}}/post/create",
+    "scripts": {
+      "preRequest": "",
+      "postResponse": ""
+    },
+    "method": "POST",
+    "queryParams": [],
+    "headers": [],
+    "body": [
+      {
+        "id": 1771707257436,
+        "key": "content",
+        "value": "test content",
+        "isEnabled": true,
+        "type": "text"
+      }
+    ],
+    "contentType": "multipart/form-data",
+    "auth": {
+      "currentAuthType": "INHERIT",
+      "authConfigStore": {}
+    }
+  }
+}
