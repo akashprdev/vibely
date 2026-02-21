@@ -1,12 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import { HttpError, sendError } from '@/utils/response';
 
-export const errorHandler = (
-  err: HttpError,
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
+export const errorHandler = (err: HttpError, req: Request, res: Response, next: NextFunction) => {
   if (res.headersSent) {
     return next(err);
   }
