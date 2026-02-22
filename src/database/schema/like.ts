@@ -1,6 +1,7 @@
 import { pgTable, timestamp, uniqueIndex, uuid } from 'drizzle-orm/pg-core';
 import { user } from './user';
 import { post } from './post';
+import { relations } from 'drizzle-orm';
 
 export const likes = pgTable(
   'likes',
@@ -24,3 +25,15 @@ export const likes = pgTable(
   },
   (table) => [uniqueIndex('user_post_unique').on(table.userId, table.postId)]
 );
+
+// one like has one user and one post
+export const likeRelation = relations(likes, ({ one }) => ({
+  user: one(user, {
+    fields: [likes.userId],
+    references: [user.id],
+  }),
+  post: one(post, {
+    fields: [likes.postId],
+    references: [post.id],
+  }),
+}));

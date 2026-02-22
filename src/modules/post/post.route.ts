@@ -16,7 +16,7 @@ router.post(
   createPost
 );
 
-router.get('/', authMiddleware, getAllPost);
+router.get('/', getAllPost);
 
 // get user post
 router.get('/mypost', authMiddleware, getMyPost);

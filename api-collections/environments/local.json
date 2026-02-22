@@ -12,6 +12,12 @@
       "type": "string",
       "id": "ca18dbcc-b0af-463b-a3d3-18f6c7fc4697",
       "isSecret": false
+    },
+    "token": {
+      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjAwNzhlYzdlLTJhODAtNDJhYy04ODU5LWRhNTRkNDZhYjQxZiIsImlhdCI6MTc3MTc0MzkzNSwiZXhwIjoxNzcyMzQ4NzM1fQ.E21qPR3o5UXFCero9MDUz2mHG-tmpve4zbIS9GqWQj8",
+      "type": "string",
+      "id": "72429202-e3c0-4064-89c7-09a36b9947e8",
+      "isSecret": false
     }
   }
 }

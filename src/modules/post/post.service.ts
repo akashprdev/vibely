@@ -1,5 +1,5 @@
 import db from '@/database/database';
-import { comments, media, post } from '@/database/schema';
+import { comments, likes, media, post } from '@/database/schema';
 import cloudinary from '@/utils/cloudinary';
 import { UploadApiResponse } from 'cloudinary';
 import { and, count, eq, inArray } from 'drizzle-orm';
@@ -66,6 +66,7 @@ export const getAllPostservice = async () => {
 
   if (postIds.length === 0) return [];
 
+  // count comments
   const commentCounts = await db
     .select({
       postId: comments.postId,
@@ -77,9 +78,21 @@ export const getAllPostservice = async () => {
 
   const countMap = new Map(commentCounts.map((c) => [c.postId, c.count]));
 
+  const likesCount = await db
+    .select({
+      postId: likes.postId,
+      count: count(),
+    })
+    .from(likes)
+    .where(inArray(likes.postId, postIds))
+    .groupBy(likes.postId);
+
+  const likesMap = new Map(likesCount.map((c) => [c.postId, c.count]));
+
   const result = posts.map((p) => ({
     ...p,
     commentCount: countMap.get(p.id) ?? 0,
+    likeCount: likesMap.get(p.id) ?? 0,
   }));
 
   return result;

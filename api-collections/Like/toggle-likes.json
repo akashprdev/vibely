@@ -1,0 +1,25 @@
+{
+  "name": "toggle-likes",
+  "rank": "auntit17717432324791",
+  "request": {
+    "type": "http",
+    "url": "{{local}}/likes",
+    "scripts": {
+      "preRequest": "",
+      "postResponse": ""
+    },
+    "method": "POST",
+    "queryParams": [],
+    "headers": [],
+    "body": "{\n  \"postId\":\"cb770f18-151e-45f7-8e4f-639d8edc127e\"\n}",
+    "contentType": "application/json",
+    "auth": {
+      "currentAuthType": "BEARER_TOKEN",
+      "authConfigStore": {
+        "BEARER_TOKEN": {
+          "bearer": "{{token}}"
+        }
+      }
+    }
+  }
+}

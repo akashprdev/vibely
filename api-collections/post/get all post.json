@@ -1,0 +1,24 @@
+{
+  "name": "get all post",
+  "rank": "av",
+  "request": {
+    "type": "http",
+    "url": "{{local}}/post",
+    "scripts": {
+      "preRequest": "",
+      "postResponse": ""
+    },
+    "method": "GET",
+    "queryParams": [],
+    "headers": [],
+    "contentType": "text/plain",
+    "auth": {
+      "currentAuthType": "BEARER_TOKEN",
+      "authConfigStore": {
+        "BEARER_TOKEN": {
+          "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijg4NTFmZGFiLTBmZGItNGI5OC05ZjY5LTU2Mjc2NWM2Yjc0OCIsImlhdCI6MTc3MTc0MzE5NywiZXhwIjoxNzcyMzQ3OTk3fQ.IcE0nDExzP0S5a2LhgN2v5v5enxzD1SCJKlkWK_Pht4"
+        }
+      }
+    }
+  }
+}

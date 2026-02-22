@@ -1,0 +1,25 @@
+{
+  "name": "delete comment",
+  "rank": "av",
+  "request": {
+    "type": "http",
+    "url": "{{local}}/comments/c83f3c2a-4a0c-45f1-aea0-9e07f5f3cdea/delete",
+    "scripts": {
+      "preRequest": "",
+      "postResponse": ""
+    },
+    "method": "DELETE",
+    "queryParams": [],
+    "headers": [],
+    "body": "{\n  \"postId\":\"60f9dac0-7569-4a3a-8454-8f40c9f1f926\"\n}",
+    "contentType": "application/json",
+    "auth": {
+      "currentAuthType": "BEARER_TOKEN",
+      "authConfigStore": {
+        "BEARER_TOKEN": {
+          "bearer": "{{token}}"
+        }
+      }
+    }
+  }
+}

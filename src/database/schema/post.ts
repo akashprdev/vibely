@@ -3,6 +3,7 @@ import { user } from './user';
 import { relations } from 'drizzle-orm';
 import { media } from './media';
 import { comments } from './comment';
+import { likes } from './like';
 
 export const post = pgTable('post', {
   id: uuid('id').defaultRandom().primaryKey(),
@@ -24,4 +25,5 @@ export const post = pgTable('post', {
 export const postRelations = relations(post, ({ many }) => ({
   media: many(media),
   comments: many(comments),
+  likes: many(likes),
 }));

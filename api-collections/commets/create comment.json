@@ -1,0 +1,25 @@
+{
+  "name": "create comment",
+  "rank": "auntit17717445063381",
+  "request": {
+    "type": "http",
+    "url": "{{local}}/comments",
+    "scripts": {
+      "preRequest": "",
+      "postResponse": ""
+    },
+    "method": "POST",
+    "queryParams": [],
+    "headers": [],
+    "body": "{\n  \"comment\":\"nice one\",\n  \"postId\":\"60f9dac0-7569-4a3a-8454-8f40c9f1f926\"\n}",
+    "contentType": "application/json",
+    "auth": {
+      "currentAuthType": "BEARER_TOKEN",
+      "authConfigStore": {
+        "BEARER_TOKEN": {
+          "bearer": "{{token}}"
+        }
+      }
+    }
+  }
+}

@@ -15,15 +15,34 @@
       {
         "id": 1771707257436,
         "key": "content",
-        "value": "test content",
+        "value": "Projects like UdyamWell and India Post are partnering to boost rural and micro-enterprises, with pilot programs to transform postal staff into \"UdyamSathis",
         "isEnabled": true,
         "type": "text"
+      },
+      {
+        "id": 1771744209946,
+        "key": "media",
+        "value": [
+          {
+            "id": "Gemini_Generated_Image_igw0v9igw0v9igw0.png-1771744230944",
+            "name": "Gemini_Generated_Image_igw0v9igw0v9igw0.png",
+            "path": "/Users/akash/Downloads/Gemini_Generated_Image_igw0v9igw0v9igw0.png",
+            "size": 865196,
+            "source": "desktop"
+          }
+        ],
+        "isEnabled": true,
+        "type": "file"
       }
     ],
     "contentType": "multipart/form-data",
     "auth": {
-      "currentAuthType": "INHERIT",
-      "authConfigStore": {}
+      "currentAuthType": "BEARER_TOKEN",
+      "authConfigStore": {
+        "BEARER_TOKEN": {
+          "bearer": "{{token}}"
+        }
+      }
     }
   }
 }
