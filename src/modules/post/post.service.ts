@@ -5,13 +5,26 @@ import { UploadApiResponse } from 'cloudinary';
 import { and, count, eq, inArray } from 'drizzle-orm';
 
 interface CreatePostServiceParameter {
+  title: string;
+  slug: string;
+  description: string;
   content: string;
   userId: string;
   files: Express.Multer.File[];
 }
 
-export const createPostService = async ({ content, userId, files }: CreatePostServiceParameter) => {
-  const [newPost] = await db.insert(post).values({ content, userId }).returning();
+export const createPostService = async ({
+  title,
+  slug,
+  description,
+  content,
+  userId,
+  files,
+}: CreatePostServiceParameter) => {
+  const [newPost] = await db
+    .insert(post)
+    .values({ title, slug, description, content, userId })
+    .returning();
 
   for (const file of files) {
     const uploaded = await new Promise<UploadApiResponse>((resolve, reject) => {
@@ -41,22 +54,12 @@ export const getAllPostservice = async () => {
   const posts = await db.query.post.findMany({
     with: {
       media: true,
-      comments: {
-        limit: 2,
+      user: {
         columns: {
-          userId: false,
-          postId: false,
+          password: false,
+          createdAt: false,
+          updatedAt: false,
         },
-        with: {
-          user: {
-            columns: {
-              password: false,
-              createdAt: false,
-              updatedAt: false,
-            },
-          },
-        },
-        orderBy: (comments, { desc }) => [desc(comments.createdAt)],
       },
     },
     orderBy: (post, { desc }) => desc(post.createdAt),
@@ -104,19 +107,6 @@ export const getMyPostService = async ({ userId }: { userId: string }) => {
     orderBy: (post, { desc }) => desc(post.createdAt),
     with: {
       media: true,
-      comments: {
-        limit: 2,
-        with: {
-          user: {
-            columns: {
-              password: false,
-              createdAt: false,
-              updatedAt: false,
-            },
-          },
-        },
-        orderBy: (post, { desc }) => desc(post.createdAt),
-      },
     },
   });
 

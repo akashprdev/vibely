@@ -6,7 +6,7 @@
     "url": "{{local}}/auth/login",
     "scripts": {
       "preRequest": "",
-      "postResponse": ""
+      "postResponse": "// **********************************************\n// 🛠️ Use JavaScript to visualize responses: https://docs.requestly.com/general/api-client/scripts\n// **********************************************\nvar data = JSON.parse(rq.response.body);\n\nvar token = data.token;\n\nrq.environment.set('token', token);\nconsole.log('Saved token:', token);"
     },
     "method": "POST",
     "queryParams": [],

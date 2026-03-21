@@ -9,7 +9,7 @@ import { NextFunction, Request, Response } from 'express';
 
 export const createPost = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const { content } = req.body;
+    const { title, slug, description, content } = req.body;
 
     if (!req.user) {
       return next(new Error('Unauthorized'));
@@ -20,6 +20,9 @@ export const createPost = async (req: Request, res: Response, next: NextFunction
     const files = Array.isArray(req.files) ? req.files : [];
 
     const result = await createPostService({
+      title,
+      slug,
+      description,
       content,
       userId,
       files,

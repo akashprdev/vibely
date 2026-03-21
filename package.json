@@ -4,7 +4,7 @@
   "main": "src/app.js",
   "lint-staged": {
     "*.{ts,js}": [
-      "prettier --write" ,
+      "prettier --write",
       "eslint --fix"
     ]
   },
@@ -26,6 +26,7 @@
     "bcrypt": "^6.0.0",
     "bcryptjs": "^3.0.3",
     "cloudinary": "^2.9.0",
+    "cors": "^2.8.6",
     "date-fns": "^4.1.0",
     "dotenv": "^17.3.1",
     "drizzle-orm": "^0.45.1",
@@ -38,17 +39,18 @@
   "devDependencies": {
     "@eslint/js": "^9.39.2",
     "@types/bcrypt": "^6.0.0",
+    "@types/cors": "^2.8.19",
     "@types/express": "^5.0.6",
     "@types/jsonwebtoken": "^9.0.10",
     "@types/multer": "^2.0.0",
     "@types/node": "^24.10.13",
     "drizzle-kit": "^0.31.9",
     "eslint": "^9.39.2",
-    "lint-staged": "^16.2.7",
     "eslint-plugin-import": "^2.32.0",
     "globals": "^16.5.0",
     "husky": "^9.1.7",
     "jiti": "^2.6.1",
+    "lint-staged": "^16.2.7",
     "nodemon": "^3.1.13",
     "prettier": "^3.8.1",
     "ts-node": "^10.9.2",

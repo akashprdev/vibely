@@ -2,17 +2,21 @@ import { pgTable, text, timestamp, uuid } from 'drizzle-orm/pg-core';
 import { user } from './user';
 import { relations } from 'drizzle-orm';
 import { media } from './media';
-import { comments } from './comment';
-import { likes } from './like';
+import { categories } from './categories';
 
 export const post = pgTable('post', {
   id: uuid('id').defaultRandom().primaryKey(),
 
-  content: text('content'),
+  title: text('title').notNull(),
+  slug: text('slug').notNull().unique(),
+  description: text('description').notNull(),
+  content: text('content').notNull(),
 
   userId: uuid('user_id')
     .notNull()
-    .references(() => user.id, { onDelete: 'cascade' }),
+    .references(() => user.id, { onDelete: 'set null' }),
+
+  categoryId: uuid('category_id').references(() => categories.id, { onDelete: 'set null' }),
 
   createdAt: timestamp('created_at').defaultNow().notNull(),
 
@@ -22,8 +26,8 @@ export const post = pgTable('post', {
     .notNull(),
 });
 
-export const postRelations = relations(post, ({ many }) => ({
+export const postRelations = relations(post, ({ one, many }) => ({
   media: many(media),
-  comments: many(comments),
-  likes: many(likes),
+  category: one(categories, { fields: [post.categoryId], references: [categories.id] }),
+  user: one(user, { fields: [post.userId], references: [user.id] }),
 }));
