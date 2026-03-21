@@ -31,15 +31,7 @@ export const createCategoryController = async (req: Request, res: Response, next
   });
 };
 
-export const getAllCategoriesController = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
-  if (!req.user) {
-    return next(new Error('Unauthorized'));
-  }
-
+export const getAllCategoriesController = async (req: Request, res: Response) => {
   const result = await getAllCategoriesService();
 
   return sendSuccess({

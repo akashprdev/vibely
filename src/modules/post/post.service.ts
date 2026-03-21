@@ -74,48 +74,41 @@ export const createPostService = async ({
   return newPost;
 };
 
-export const getAllPostservice = async () => {
+export const getAllPostservice = async ({
+  page = 1,
+  limit = 10,
+}: {
+  page?: number;
+  limit?: number;
+} = {}) => {
+  const offset = (page - 1) * limit;
+
   const posts = await db.query.post.findMany({
+    limit: limit,
+    offset,
+
     with: {
       media: true,
+      user: {
+        columns: {
+          password: false,
+          role: false,
+          createdAt: false,
+          updatedAt: false,
+        },
+      },
+      category: true,
     },
     orderBy: (post, { desc }) => desc(post.createdAt),
   });
 
-  // const postIds = posts?.map((p) => p.id);
+  const [{ total }] = await db
+    .select({
+      total: count(),
+    })
+    .from(post);
 
-  // if (postIds.length === 0) return [];
-
-  // count comments
-  // const commentCounts = await db
-  //   .select({
-  //     postId: comments.postId,
-  //     count: count(),
-  //   })
-  //   .from(comments)
-  //   .where(inArray(comments.postId, postIds))
-  //   .groupBy(comments.postId);
-
-  // const countMap = new Map(commentCounts.map((c) => [c.postId, c.count]));
-
-  // const likesCount = await db
-  //   .select({
-  //     postId: likes.postId,
-  //     count: count(),
-  //   })
-  //   .from(likes)
-  //   .where(inArray(likes.postId, postIds))
-  //   .groupBy(likes.postId);
-
-  // const likesMap = new Map(likesCount.map((c) => [c.postId, c.count]));
-
-  // const result = posts.map((p) => ({
-  //   ...p,
-  //   commentCount: countMap.get(p.id) ?? 0,
-  //   likeCount: likesMap.get(p.id) ?? 0,
-  // }));
-
-  return posts;
+  return { posts, total };
 };
 
 export const getMyPostService = async ({ userId }: { userId: string }) => {

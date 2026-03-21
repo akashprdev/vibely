@@ -11,7 +11,7 @@ const router = Router();
 
 router.post('/', authMiddleware, createCategoryController);
 
-router.get('/', authMiddleware, getAllCategoriesController);
+router.get('/', getAllCategoriesController);
 
 router.delete('/:categoryId', authMiddleware, deleteCategoryController);
 

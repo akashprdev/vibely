@@ -4,9 +4,11 @@ import routes from '@/routes';
 import db from './database/database';
 import { errorHandler } from './middlewares/error.middleware';
 import cors from 'cors';
+import morgan from 'morgan';
 
 const app = express();
 
+app.use(morgan('dev'));
 // connect database
 const connectDatabase = async () => {
   try {

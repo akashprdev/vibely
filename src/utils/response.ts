@@ -5,6 +5,10 @@ interface SuccessOptions<T> {
   statusCode?: number;
   message?: string;
   data?: T;
+
+  page?: number;
+  limit?: number;
+  noOfPages?: number;
 }
 
 interface ErrorOptions {
@@ -21,10 +25,19 @@ export const sendSuccess = <T>({
   statusCode = 200,
   message = 'Success',
   data,
+
+  page,
+  limit,
+  noOfPages,
 }: SuccessOptions<T>) => {
   return res.status(statusCode).json({
     success: true,
     message,
+
+    ...(page !== undefined && { page }),
+    ...(limit !== undefined && { limit }),
+    ...(noOfPages !== undefined && { noOfPages }),
+
     data: data ?? null,
   });
 };

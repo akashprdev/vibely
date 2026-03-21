@@ -47,13 +47,27 @@ export const createPost = async (req: Request, res: Response, next: NextFunction
 
 export const getAllPost = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const result = await getAllPostservice();
+    const { page, limit } = req.query;
+
+    const pageNumber = page ? Number(page) : undefined;
+    const limitNumber = limit ? Number(limit) : undefined;
+
+    const { posts, total } = await getAllPostservice({
+      page: Number(pageNumber) || 1,
+      limit: Number(limitNumber) || 10,
+    });
+
+    const noOfPages =
+      pageNumber && limitNumber ? Math.ceil(total / Number(limitNumber)) : undefined;
 
     return sendSuccess({
       res,
       statusCode: 201,
       message: 'post retrived succesfully',
-      data: result,
+      ...(pageNumber && { page: pageNumber }),
+      ...(limitNumber && { limit: limitNumber }),
+      ...(noOfPages && { noOfPages }),
+      data: posts,
     });
   } catch (error) {
     next(error);

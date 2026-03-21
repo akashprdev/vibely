@@ -30,6 +30,10 @@ export const post = pgTable('post', {
 
 export const postRelations = relations(post, ({ one, many }) => ({
   media: many(media),
+  user: one(user, {
+    fields: [post.userId],
+    references: [user.id],
+  }),
   category: one(categories, { fields: [post.categoryId], references: [categories.id] }),
   comments: many(comments),
   likes: many(likes),
