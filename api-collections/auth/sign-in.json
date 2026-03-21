@@ -6,7 +6,7 @@
     "url": "{{local}}/auth/login",
     "scripts": {
       "preRequest": "",
-      "postResponse": "// **********************************************\n// 🛠️ Use JavaScript to visualize responses: https://docs.requestly.com/general/api-client/scripts\n// **********************************************\nvar data = JSON.parse(rq.response.body);\n\nvar token = data.token;\n\nrq.environment.set('token', token);\nconsole.log('Saved token:', token);"
+      "postResponse": "// **********************************************\n// 🛠️ Use JavaScript to visualize responses: https://docs.requestly.com/general/api-client/scripts\n// **********************************************\n// var data = JSON.parse(rq.response.body);\n\n// var token = data.token;\n\n// rq.environment.set('token', token);\n// console.log('Saved token:', token);"
     },
     "method": "POST",
     "queryParams": [],

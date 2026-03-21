@@ -1,4 +1,10 @@
-import { createPost, deleteMyPost, getAllPost, getMyPost } from './post.controller';
+import {
+  createPost,
+  deleteMyPost,
+  getAllPost,
+  getMyPost,
+  getPostsByCategory,
+} from './post.controller';
 import { authMiddleware } from '@/middlewares/auth.middleware';
 import { upload } from '@/middlewares/upload.middleware';
 import { validate } from '@/middlewares/validate.middleware';
@@ -22,5 +28,7 @@ router.get('/', getAllPost);
 router.get('/mypost', authMiddleware, getMyPost);
 
 router.delete('/mypost/:id/delete', authMiddleware, deleteMyPost);
+
+router.get('/category/:id', authMiddleware, getPostsByCategory);
 
 export default router;

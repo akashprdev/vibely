@@ -1,6 +1,8 @@
 import { relations } from 'drizzle-orm';
-import { pgTable, text, timestamp, uuid, varchar } from 'drizzle-orm/pg-core';
+import { pgEnum, pgTable, text, timestamp, uuid, varchar } from 'drizzle-orm/pg-core';
 import { comments } from './comment';
+
+export const roleEnum = pgEnum('role', ['admin', 'editor', 'author', 'user']);
 
 export const user = pgTable('user', {
   id: uuid('id').defaultRandom().primaryKey(),
@@ -9,6 +11,8 @@ export const user = pgTable('user', {
   email: varchar('email', { length: 255 }).notNull(),
 
   password: text('password').notNull(),
+
+  role: roleEnum('role').default('user'),
 
   createdAt: timestamp('created_at').defaultNow().notNull(),
 

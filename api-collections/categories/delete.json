@@ -1,0 +1,25 @@
+{
+  "name": "delete",
+  "rank": "av",
+  "request": {
+    "type": "http",
+    "url": "{{local}}/categories/a2151566-2f5a-47fe-a9bf-64d9b65f4b17",
+    "scripts": {
+      "preRequest": "",
+      "postResponse": ""
+    },
+    "method": "DELETE",
+    "queryParams": [],
+    "headers": [],
+    "body": "{\n  \"name\":\"World Affairs\"\n}",
+    "contentType": "application/json",
+    "auth": {
+      "currentAuthType": "BEARER_TOKEN",
+      "authConfigStore": {
+        "BEARER_TOKEN": {
+          "bearer": "{{token}}"
+        }
+      }
+    }
+  }
+}

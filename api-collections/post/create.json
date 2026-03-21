@@ -3,7 +3,7 @@
   "rank": "auntit17717070933921",
   "request": {
     "type": "http",
-    "url": "{{local}}/post/create",
+    "url": "{{local}}/posts/create",
     "scripts": {
       "preRequest": "",
       "postResponse": ""
@@ -15,7 +15,7 @@
       {
         "id": 1771707257436,
         "key": "content",
-        "value": "Projects like UdyamWell and India Post are partnering to boost rural and micro-enterprises, with pilot programs to transform postal staff into \"UdyamSathis",
+        "value": "Projects UdyamWell and India Post are partnering to boost rural and micro-enterprises, with pilot programs to transform postal staff into \"UdyamSathis",
         "isEnabled": true,
         "type": "text"
       },
@@ -29,10 +29,45 @@
             "path": "/Users/akash/Downloads/Gemini_Generated_Image_igw0v9igw0v9igw0.png",
             "size": 865196,
             "source": "desktop"
+          },
+          {
+            "id": "WhatsApp_Image_2026-03-12_at_15.48.02-removebg-previe1 (1).jpeg-1774090772337",
+            "name": "WhatsApp_Image_2026-03-12_at_15.48.02-removebg-previe1 (1).jpeg",
+            "path": "/Users/akash/Downloads/WhatsApp_Image_2026-03-12_at_15.48.02-removebg-previe1 (1).jpeg",
+            "size": 44510,
+            "source": "desktop"
           }
         ],
         "isEnabled": true,
         "type": "file"
+      },
+      {
+        "id": 1774081311093,
+        "key": "title",
+        "value": "Midnight Over Tokyo: A Visual Journey Through the eon Rain",
+        "isEnabled": true,
+        "type": "text"
+      },
+      {
+        "id": 1774081319784,
+        "key": "description",
+        "value": "A cinematic exploration of the world's most vibrant city after the lights dim and the shadows take over.",
+        "isEnabled": true,
+        "type": "text"
+      },
+      {
+        "id": 1774081358867,
+        "key": "slug",
+        "value": "Midnight Over Tokyo: A Visual Journey Through the eon Rain",
+        "isEnabled": true,
+        "type": "text"
+      },
+      {
+        "id": 1774090103910,
+        "key": "categoryId",
+        "value": "44c01e4b-afa0-4a9d-a5d7-b1f2dc6bde63",
+        "isEnabled": true,
+        "type": "text"
       }
     ],
     "contentType": "multipart/form-data",

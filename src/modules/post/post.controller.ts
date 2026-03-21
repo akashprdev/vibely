@@ -3,16 +3,22 @@ import {
   getAllPostservice,
   getMyPostService,
   deleteMypost,
+  postsByCategoryService,
 } from './post.service';
 import { sendSuccess } from '@/utils/response';
 import { NextFunction, Request, Response } from 'express';
+import { categoryIsExists } from '../categories/categories.utils';
 
 export const createPost = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const { title, slug, description, content } = req.body;
+    const { title, description, content, categoryId } = req.body;
 
     if (!req.user) {
       return next(new Error('Unauthorized'));
+    }
+
+    if (!title || !content || !categoryId) {
+      return next(new Error('Missing required fields'));
     }
 
     const userId = req.user!.id;
@@ -21,11 +27,11 @@ export const createPost = async (req: Request, res: Response, next: NextFunction
 
     const result = await createPostService({
       title,
-      slug,
       description,
       content,
       userId,
       files,
+      categoryId,
     });
 
     return sendSuccess({
@@ -99,6 +105,29 @@ export const deleteMyPost = async (req: Request, res: Response, next: NextFuncti
       statusCode: 200,
       message: 'post delete succesfully',
       data: result,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const getPostsByCategory = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const categoryId = req.params.id as string;
+
+    const categoryExits = await categoryIsExists({ categoryId });
+
+    if (!categoryExits) {
+      throw new Error('category is not extis');
+    }
+
+    const posts = await postsByCategoryService({
+      categoryId: String(categoryId),
+    });
+
+    return sendSuccess({
+      res,
+      data: posts,
     });
   } catch (error) {
     next(error);

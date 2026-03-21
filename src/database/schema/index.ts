@@ -3,3 +3,4 @@ export * from './post';
 export * from './comment';
 export * from './like';
 export * from './media';
+export * from './categories';

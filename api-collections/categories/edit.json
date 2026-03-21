@@ -1,0 +1,25 @@
+{
+  "name": "edit",
+  "rank": "auu",
+  "request": {
+    "type": "http",
+    "url": "{{local}}/categories/44c01e4b-afa0-4a9d-a5d7-b1f2dc6bde63",
+    "scripts": {
+      "preRequest": "",
+      "postResponse": ""
+    },
+    "method": "PATCH",
+    "queryParams": [],
+    "headers": [],
+    "body": "{\n  \"name\":\"test 2\"\n}",
+    "contentType": "application/json",
+    "auth": {
+      "currentAuthType": "BEARER_TOKEN",
+      "authConfigStore": {
+        "BEARER_TOKEN": {
+          "bearer": "{{token}}"
+        }
+      }
+    }
+  }
+}
